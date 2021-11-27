@@ -1,0 +1,23 @@
+.main-heading {
+    font-weight: 800;
+    font-size: xxx-large;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.sub-heading {
+    font-family: monospace;
+    text-transform: uppercase;
+    font-size: xx-large;
+    color: purple;
+    padding: 15px;
+}
+
+.topic-family {
+    margin: 60px 60px;
+    padding: 30px;
+    display: flex;
+    flex-flow: wrap;
+    border: 1px solid green;
+    justify-content: center;
+}

@@ -1,0 +1,46 @@
+.topic-item-container {
+    min-width: 200px;
+    min-height: 100px;
+    border: 1px solid green;
+    margin: 20px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.topic-item-container:hover {
+    cursor: pointer;
+    background-color: rgb(221, 253, 172);
+}
+
+.item-heading {
+    font-size: larger;
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.item-number {
+    font-size: large;
+    padding: 15px;
+}
+
+.item-content {
+    padding: 10px;
+}
+
+.icon-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color:rgb(221, 253, 172);
+    border-right: 1px solid green;
+}
+
+.icon-modify {
+    font-size: xx-large;
+    color: green;
+}
