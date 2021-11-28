@@ -9,7 +9,11 @@ const QuestionsList = (props) => {
       setQuestion(res);
     });
   }, [props.topic]);
-  console.log(questions)
+  const markQuestionAsDoneHandler = (id, index) => {
+    DataBaseService.updateById(id, {...questions[index], done: true}).then((res) => {
+        setQuestion(res);
+    })
+  }
   useEffect(() => {
     findQuestions();
   }, [findQuestions]);
@@ -18,29 +22,34 @@ const QuestionsList = (props) => {
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Question</th>
+          <th scope="col">Completed</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colSpan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {questions.map((question,index) => (
+          <tr key={question.id}>
+            <th scope="row">{index+1}</th>
+            <td className={classes.problem}>{question.problem}</td>
+            <td>
+              {!question.done && (
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onClick={markQuestionAsDoneHandler.bind(null, question.id, index)}
+                  />
+                  <label className="form-check-label" htmlFor="flexCheckDefault">
+                    Mark as completed
+                  </label>
+                </div>
+              )}
+              {question.done && <p className={classes.completed}>&#9989; Completed</p>}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
